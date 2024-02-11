@@ -9,6 +9,7 @@ public class Main {
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
 
+
         transaction.commit();
         session.close();
     }
