@@ -82,3 +82,13 @@ CascadeType.REPLICATE is a cascading type in Hibernate that specifies that the r
 #### **8.CascadeType.SAVE_UPDATE**
 
 CascadeType.SAVE_UPDATE is a cascading type in Hibernate that specifies that the save or update operation should be cascaded from the parent entity to the child entities. When CascadedType.SAVE_UPDATE is used, any child entities associated with a parent entity will be automatically saved or updated when the parent entity is saved or updated. This means that any changes made to the child entities will be persisted in the database along with the parent entity.
+
+
+## **Assignments**
+
+1.Query query = session.createQuery("select title from Book where publicationYear > '2010'");
+
+2.Query query = session.createQuery("update Book set price = price + (price * 10.0 / 100.0)  where author.id = :author_id");
+
+4.Query query = session.createQuery("select avg (price) from Book ");
+
