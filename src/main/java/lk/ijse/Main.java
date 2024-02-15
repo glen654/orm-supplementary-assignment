@@ -30,16 +30,22 @@ public class Main {
         System.out.println(count);*/
 
 
-       /* Query query = session.createQuery("select avg (price) from Book ");
+        /*Query query = session.createQuery("select avg (price) from Book ");
         Object result = query.uniqueResult();
         System.out.println(result);*/
 
-      Query query = session.createQuery("select a.name, count (b.title) from Author a left join a.books b group by a.id,a.name");
-      List<Object[]> bookCount = query.list();
+        /*Query query = session.createQuery("select a.name, count (b.title) from Author a left join a.books b group by a.id,a.name");
+        List<Object[]> bookCount = query.list();
 
-      for(Object[] result : bookCount){
-          System.out.println("Author: " + result[0] + ", Count: " + result[1]);
-      }
+        for(Object[] result : bookCount){
+            System.out.println("Author: " + result[0] + ", Count: " + result[1]);
+        }*/
+
+        Query query = session.createQuery("select b from Book b join b.author a where a.country = :countryName");
+        query.setParameter("countryName","Sri Lanka");
+        List<Book> bookList = query.list();
+        System.out.println(bookList);
+
        /* Query query = session.createQuery("select a.name from Author a where (select count(b.title) from Book b where b.author = a) > " +
                 "(select avg(count(b.title)) from Book b group by b.author)");
         List<String> authors = query.list();

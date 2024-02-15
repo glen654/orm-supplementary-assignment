@@ -92,6 +92,8 @@ CascadeType.SAVE_UPDATE is a cascading type in Hibernate that specifies that the
 
 4.Query query = session.createQuery("select avg (price) from Book ");
 
-5. Query query = session.createQuery("select a.name, count (b.title) from Author a left join a.books b group by a.id,a.name");
+5.Query query = session.createQuery("select a.name, count (b.title) from Author a left join a.books b group by a.id,a.name");
 
-6.
+6.Query query = session.createQuery("select b from Book b join b.author a where a.country = :countryName");
+
+7.
