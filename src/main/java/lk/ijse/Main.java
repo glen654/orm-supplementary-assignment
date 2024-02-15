@@ -17,6 +17,7 @@ public class Main {
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
 
+
         /* Write an HQL query to retrieve all books published after the year 2010.*/
         Query query1 = session.createQuery("select title from Book where publicationYear > :year");
         query1.setParameter("year",2010);
