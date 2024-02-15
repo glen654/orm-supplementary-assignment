@@ -8,25 +8,27 @@ import java.util.List;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
-    @OneToMany(mappedBy = "author")
+    private String country;
+    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
     private List<Book> books;
 
     public Author() {
     }
 
-    public Author(int id, String name, List<Book> books) {
+    public Author(Long id, String name, String country, List<Book> books) {
         this.id = id;
         this.name = name;
+        this.country = country;
         this.books = books;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,6 +38,14 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public List<Book> getBooks() {
@@ -51,6 +61,7 @@ public class Author {
         return "Author{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
                 ", books=" + books +
                 '}';
     }

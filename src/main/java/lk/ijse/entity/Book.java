@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String title;
     private String publicationYear;
     private double price;
@@ -17,7 +17,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(int id, String title, String publicationYear, double price, Author author) {
+    public Book(Long id, String title, String publicationYear, double price, Author author) {
         this.id = id;
         this.title = title;
         this.publicationYear = publicationYear;
@@ -25,11 +25,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
