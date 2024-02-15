@@ -17,7 +17,7 @@ public class Main {
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
 
-       /* Write an HQL query to retrieve all books published after the year 2010.*/
+        /* Write an HQL query to retrieve all books published after the year 2010.*/
         Query query1 = session.createQuery("select title from Book where publicationYear > :year");
         query1.setParameter("year",2010);
         List<String> titles = query1.list();
@@ -52,11 +52,11 @@ public class Main {
         List<Book> bookList = query5.list();
         System.out.println(bookList);
 
-        Query query6 = session.createQuery("select a from Author a where (select count (b) from Book b where b.author = a )");
-
-        Query query7 = session.createQuery("select a.name from Author a where (select count(b.title) from Book b where b.author = a) > " +
+        /*Write an HQL query to find authors who have written more than the average number of
+        books.*/
+        Query query6 = session.createQuery("select a.name from Author a where (select count(b.title) from Book b where b.author = a) > " +
                 "(select avg(count(b.title)) from Book b group by b.author)");
-        List<String> authors = query7.list();
+        List<String> authors = query6.list();
         for(String authorName : authors){
             System.out.println(authorName);
         }
